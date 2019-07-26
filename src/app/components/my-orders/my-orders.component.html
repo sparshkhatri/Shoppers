@@ -1,0 +1,40 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a routerLink="/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">My Orders</strong></div>
+    </div>
+  </div>
+</div>  
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3 text-black">My Orders</h2>
+      </div>
+      <div class="col-md-12" *ngIf="orders$ | async as orders; else emptyorders">
+      <table class="table table-hover">
+        <tr>
+            <th>Customer</th>
+          <th>Order Date</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let order of orders">
+            <td>{{ order.shipping.first_name }} {{ order.shipping.last_name }}</td>
+          <td>{{ order.dateCreated | date }}</td>
+          
+          <td><a class="btn btn-primary" href="javascript:;">View Order</a>          
+          </td>
+        </tr>
+      </table>
+        
+      </div>
+      <ng-template #emptyCart>
+        <div class="col-md-12">
+            <p>No Orders to display.</p>
+        </div>
+      </ng-template>
+   
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="block-4 text-center border">
+  <figure class="block-4-image">
+    <a href=""><img src="{{ product.image_url }}" alt="{{ product.name }}" class="img-fluid"></a>
+  </figure>
+  <div class="block-4-text p-4">
+    <h3><a href="">{{ product.name }}</a></h3>
+    <p class="text-primary font-weight-bold">${{ product.price }}</p>
+  </div>
+  <div class="cart-btn-wrapper">
+    <button *ngIf="getQuantity() === 0" type="button" class="btn btn-primary btn-block" (click)="addToCart()">Add To Cart</button>
+    <div *ngIf="getQuantity() > 0">
+      <app-quantity-selector [product]="product" [shopping-cart]="shoppingCart"></app-quantity-selector>
+    </div>
+  </div>
+</div>
